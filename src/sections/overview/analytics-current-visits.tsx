@@ -62,10 +62,10 @@ export function AnalyticsCurrentVisits({ title, subheader, chart, sx, ...other }
         series={chartSeries}
         options={chartOptions}
         sx={{
-          my: 4.5,
+          my: 4.3,
           mx: 'auto',
-          width: { xs: 240, xl: 260 },
-          height: { xs: 240, xl: 260 },
+          width: { xs: 220, xl: 240 },
+          height: { xs: 220, xl: 240 },
         }}
       />
 
