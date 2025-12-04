@@ -1,0 +1,69 @@
+services:
+  material-kit-react:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: material-kit-react-app
+    ports:
+      - "3039:3039"
+    volumes:
+      # Mount source code for hot reload (development)
+      - .:/app
+      # Exclude node_modules from volume mount
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+      - FAST_REFRESH=true
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    # Health check for development
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "3039"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Production service (nginx + built assets)
+  material-kit-react-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+      target: production
+    container_name: material-kit-react-prod
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    profiles:
+      - production
+    # Production health check
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  # Optional: Development with hot reload + auto-reload on file changes
+  material-kit-react-hot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: material-kit-react-hot
+    ports:
+      - "3039:3039"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - WATCHPACK_POLLING=true
+      - CHOKIDAR_USEPOLLING=true
+    command: sh -c "npm run dev"
+    restart: unless-stopped
+    profiles:
+      - hot-reload
