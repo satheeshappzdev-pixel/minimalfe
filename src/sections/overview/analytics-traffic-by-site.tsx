@@ -35,7 +35,7 @@ export function AnalyticsTrafficBySite({ title, subheader, list, sx, ...other }:
           <Box
             key={site.label}
             sx={(theme) => ({
-              py: 2.5,
+              py: 2.3,
               display: 'flex',
               borderRadius: 1.5,
               textAlign: 'center',

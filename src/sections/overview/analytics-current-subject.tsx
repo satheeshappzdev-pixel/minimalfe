@@ -54,7 +54,7 @@ export function AnalyticsCurrentSubject({ title, subheader, chart, sx, ...other 
         options={chartOptions}
         slotProps={{ loading: { py: 2.5 } }}
         sx={{
-          my: 1,
+          my: .35,
           mx: 'auto',
           width: 300,
           height: 300,

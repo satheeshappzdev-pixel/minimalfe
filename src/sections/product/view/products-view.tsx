@@ -85,7 +85,7 @@ export function ProductsView() {
   );
 
   return (
-    <DashboardContent>
+    <DashboardContent maxWidth={false} disableGutters>
       <CartIcon totalItems={8} />
 
       <Typography variant="h4" sx={{ mb: 5 }}>

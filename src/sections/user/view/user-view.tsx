@@ -40,7 +40,7 @@ export function UserView() {
   const notFound = !dataFiltered.length && !!filterName;
 
   return (
-    <DashboardContent>
+    <DashboardContent maxWidth={false} disableGutters>
       <Box
         sx={{
           mb: 5,
