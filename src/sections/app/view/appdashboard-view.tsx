@@ -1,3 +1,4 @@
+/* eslint-disable perfectionist/sort-imports */
 import { useState } from 'react';
 
 import Box from '@mui/material/Box';
@@ -10,18 +11,17 @@ import TableRow from '@mui/material/TableRow';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
-import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';
-import { useTheme } from '@mui/material/styles';
 import TableContainer from '@mui/material/TableContainer';
+import { useTheme } from '@mui/material/styles';
 
 import { DashboardContent } from 'src/layouts/dashboard';
 
 import { Chart } from 'src/components/chart';
 import { Iconify } from 'src/components/iconify';
 
-// ----------------------------------------------------------------------
 
 // Mock data for invoices
 const invoices = [
@@ -127,7 +127,6 @@ export function AppDashboardView() {
       <Card>
         <CardContent>
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-            {/* Left side - Metrics */}
             <Box sx={{ flex: 1 }}>
               <Typography variant="body2" color="text.secondary" gutterBottom>
                 {title}
@@ -156,7 +155,6 @@ export function AppDashboardView() {
               </Box>
             </Box>
 
-            {/* Right side - Sparkline Chart */}
             <Box sx={{ width: 80, height: 60 }}>
               <Chart
                 type="bar"
@@ -223,7 +221,6 @@ export function AppDashboardView() {
 
   return (
     <DashboardContent maxWidth={false}>
-      {/* Welcome Banner */}
       <Card sx={{ mb: 3, bgcolor: 'grey.900', color: 'white' }}>
         <CardContent
           sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', p: 3 }}
@@ -248,7 +245,6 @@ export function AppDashboardView() {
       </Card>
 
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-        {/* Metrics Cards */}
         <Box
           sx={{
             display: 'grid',
@@ -256,14 +252,11 @@ export function AppDashboardView() {
             gap: 3,
           }}
         >
-          {renderMetricCard('Total active users', '18,765', 2.6, [
-            22, 8, 35, 50, 82, 84, 77, 12,
-          ])}
+          {renderMetricCard('Total active users', '18,765', 2.6, [22, 8, 35, 50, 82, 84, 77, 12])}
           {renderMetricCard('Total installed', '4,876', 0.2, [56, 47, 40, 62, 73, 30, 23, 54])}
           {renderMetricCard('Total downloads', '678', -0.1, [40, 70, 50, 28, 70, 75, 7, 64])}
         </Box>
 
-        {/* Invoices Table & Related Applications */}
         <Box
           sx={{
             display: 'grid',
@@ -271,7 +264,6 @@ export function AppDashboardView() {
             gap: 3,
           }}
         >
-          {/* Invoices Table */}
           <Card>
             <CardContent>
               <Typography variant="h6" gutterBottom sx={{ fontWeight: 600, mb: 2 }}>
@@ -317,14 +309,12 @@ export function AppDashboardView() {
             </CardContent>
           </Card>
 
-          {/* Related Applications */}
           <Card>
             <CardContent sx={{ p: 2.5 }}>
               <Typography variant="h6" sx={{ fontWeight: 600, mb: 2, px: 0.5 }}>
                 Related applications
               </Typography>
 
-              {/* Tab Buttons */}
               <Box
                 sx={{
                   display: 'flex',
@@ -361,7 +351,6 @@ export function AppDashboardView() {
                 ))}
               </Box>
 
-              {/* Applications List */}
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                 {applications.map((app, index) => (
                   <Box
@@ -376,7 +365,6 @@ export function AppDashboardView() {
                       '&:hover': { bgcolor: 'action.hover' },
                     }}
                   >
-                    {/* Left side - Icon and Info */}
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, flex: 1 }}>
                       <Avatar
                         sx={{
@@ -394,7 +382,6 @@ export function AppDashboardView() {
                           {app.name}
                         </Typography>
 
-                        {/* Inline metrics with icons */}
                         <Box
                           sx={{
                             display: 'flex',
@@ -403,10 +390,9 @@ export function AppDashboardView() {
                             flexWrap: 'wrap',
                           }}
                         >
-                          {/* Users */}
                           <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
                             <Iconify
-                              icon="solar:users-group-rounded-bold"
+                              icon={'solar:users-group-rounded-bold' as any}
                               width={14}
                               sx={{ color: 'text.secondary' }}
                             />
@@ -415,10 +401,9 @@ export function AppDashboardView() {
                             </Typography>
                           </Box>
 
-                          {/* Storage */}
                           <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
                             <Iconify
-                              icon="solar:database-bold"
+                              icon={'solar:database-bold' as any}
                               width={14}
                               sx={{ color: 'text.secondary' }}
                             />
@@ -427,10 +412,9 @@ export function AppDashboardView() {
                             </Typography>
                           </Box>
 
-                          {/* Rating */}
                           <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
                             <Iconify
-                              icon="solar:star-bold"
+                              icon={'solar:star-bold' as any}
                               width={14}
                               sx={{ color: 'warning.main' }}
                             />
@@ -442,7 +426,6 @@ export function AppDashboardView() {
                       </Box>
                     </Box>
 
-                    {/* Right side - Price */}
                     <Typography
                       variant="body2"
                       sx={{
@@ -460,7 +443,6 @@ export function AppDashboardView() {
           </Card>
         </Box>
 
-        {/* Top Installed Countries & Top Authors */}
         <Box
           sx={{
             display: 'grid',
@@ -468,7 +450,6 @@ export function AppDashboardView() {
             gap: 3,
           }}
         >
-          {/* Top Installed Countries */}
           <Card>
             <CardContent>
               <Typography variant="h6" gutterBottom sx={{ fontWeight: 600, mb: 2 }}>
@@ -509,7 +490,6 @@ export function AppDashboardView() {
             </CardContent>
           </Card>
 
-          {/* Top Authors */}
           <Card>
             <CardContent>
               <Typography variant="h6" gutterBottom sx={{ fontWeight: 600, mb: 2 }}>
@@ -522,6 +502,7 @@ export function AppDashboardView() {
                     : author.trophy === 'silver'
                       ? '#C0C0C0'
                       : '#CD7F32';
+
                 return (
                   <Box
                     key={index}
@@ -567,7 +548,6 @@ export function AppDashboardView() {
           </Card>
         </Box>
 
-        {/* Conversion & Applications Cards */}
         <Box
           sx={{
             display: 'grid',
